@@ -15,10 +15,10 @@ import java.util.Map;
 @Service
 public class QueryExecutorServiceImpl implements QueryExecutorService {
 
-    @Qualifier("DwhVerticaNamedTemplate")
+    @Qualifier("JdbcNamedTemplate")
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    @Qualifier("DwhVerticaTemplate")
+    @Qualifier("JdbcTemplate")
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -41,4 +41,5 @@ public class QueryExecutorServiceImpl implements QueryExecutorService {
     public List<String> getQueryMetadata(String sql) {
         return jdbcTemplate.query(sql, ResultSetToJsonMapper::extractColumnMetadata);
     }
+
 }
