@@ -21,7 +21,7 @@ public class DatasourceConfig {
     
     @Bean(name = {"JdbcTemplate"})
     JdbcTemplate createDwhVerticaTemplate() {
-        return new JdbcTemplate(dwhVerticaDataSource());
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean(name = {"JdbcNamedTemplate"})
@@ -30,3 +30,4 @@ public class DatasourceConfig {
     }
 
 }
+
