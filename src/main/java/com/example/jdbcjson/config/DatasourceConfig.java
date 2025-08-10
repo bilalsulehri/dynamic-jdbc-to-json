@@ -5,6 +5,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -17,9 +18,15 @@ public class DatasourceConfig {
         return DataSourceBuilder.create().build();
     }
 
+    
+    @Bean(name = {"JdbcTemplate"})
+    JdbcTemplate createDwhVerticaTemplate() {
+        return new JdbcTemplate(dwhVerticaDataSource());
+    }
 
     @Bean(name = {"JdbcNamedTemplate"})
     NamedParameterJdbcTemplate createJdbcNamedTemplated() {
         return new NamedParameterJdbcTemplate(dataSource());
     }
+
 }
