@@ -1,14 +1,16 @@
 package com.example.jdbcjson.service.dynamic;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 @Service
-@Slf4j
 public class DynamicService {
+
+    private static final Logger log = LoggerFactory.getLogger(DynamicService.class);
 
     private final QueryExecutorService queryExecutorService;
     public DynamicService(QueryExecutorService queryExecutorService) {
